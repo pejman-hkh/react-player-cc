@@ -1,5 +1,5 @@
 # React Custom Player
-react-playerx is a lightweight and customizable React video player component with built-in support for:
+react-player-cc is a lightweight and customizable React video player component with built-in support for:
 
 Custom controls (play/pause, volume, progress bar, etc.)
 
@@ -11,8 +11,8 @@ Minimal setup — just import the component and stylesheet
 
 ✅ Example Usage
 ```ts
-import 'react-playerx/style.css'
-import ReactCustomPlayer from 'react-playerx'
+import 'react-player-cc/style.css'
+import ReactCustomPlayer from 'react-player-cc'
 
 function App() {
   return <ReactCustomPlayer src="/video.mp4" subtitles="/subs.srt" />
