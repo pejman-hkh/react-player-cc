@@ -20,6 +20,8 @@ function App() {
 ```
 
 🛠 Features
+
+
 🎛 Custom built controls (not using the browser's native controls)
 
 💬 SRT subtitle support out of the box
