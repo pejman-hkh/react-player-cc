@@ -557,7 +557,7 @@ export default function ReactPlayerCC({
 
         hideBar();
       }}
-      className={"player-container" + (isFullScreen ? " player-fullscreen" : "")}
+      className={"playercc-container" + (isFullScreen ? " playercc-fullscreen" : "")}
     >
       <video
         preload="none"
@@ -611,17 +611,17 @@ export default function ReactPlayerCC({
       </video>
 
 
-      {loading && <div className="player-title">
+      {loading && <div className="playercc-title">
         <Spinner />
       </div>}
 
-      {!loading && !play && <div className="player-title player-title-no-background" onClick={() => {
+      {!loading && !play && <div className="playercc-title playercc-title-no-background" onClick={() => {
         setShowSubtitles(false);
         if (!showSubtitles) {
           playHandler();
         }
       }}>
-        <div className="player-play-icon">
+        <div className="playercc-play-icon">
           <i>
             <svg xmlns="http://www.w3.org/2000/svg" width={32} height={32} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-play-icon lucide-play"><path d="M5 5a2 2 0 0 1 3.008-1.728l11.997 6.998a2 2 0 0 1 .003 3.458l-12 7A2 2 0 0 1 5 19z" /></svg>
           </i>
@@ -629,15 +629,15 @@ export default function ReactPlayerCC({
         {alert}
       </div>}
 
-      <div className={"player-bar-wrapper"} ref={playerBarRef}>
+      <div className={"playercc-bar-wrapper"} ref={playerBarRef}>
         {children}
 
-        {activeCue !== "" && <div className="player-subtitle" style={{ marginBottom: subtitleMargin }} dir={direction} dangerouslySetInnerHTML={{ __html: activeCue }}></div>}
+        {activeCue !== "" && <div className="playercc-subtitle" style={{ marginBottom: subtitleMargin }} dir={direction} dangerouslySetInnerHTML={{ __html: activeCue }}></div>}
 
-        <div className={"player-bars" + (!barVisibility ? " v-none" : "")}>
+        <div className={"playercc-bars" + (!barVisibility ? " v-none" : "")}>
 
 
-          <div className="player-bar">
+          <div className="playercc-bar">
 
 
             {fromFirst && <button aria-label={t('Play From First')} onClick={() => {
@@ -654,20 +654,20 @@ export default function ReactPlayerCC({
                   console.error(err);
                 });
               }
-            }} className="player-fromfirst">
+            }} className="playercc-fromfirst">
               <h5>{t('Play from First')}</h5>
             </button>}
 
 
             <button onClick={() => {
               setShowSettings(!showSettings)
-            }} data-bs-toggle="tooltip" data-bs-placement="top" title={t('Settings')} className="player-btn" >
+            }} data-bs-toggle="tooltip" data-bs-placement="top" title={t('Settings')} className="playercc-btn" >
               <svg xmlns="http://www.w3.org/2000/svg" width={28} height={28} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-settings-icon lucide-settings"><path d="M9.671 4.136a2.34 2.34 0 0 1 4.659 0 2.34 2.34 0 0 0 3.319 1.915 2.34 2.34 0 0 1 2.33 4.033 2.34 2.34 0 0 0 0 3.831 2.34 2.34 0 0 1-2.33 4.033 2.34 2.34 0 0 0-3.319 1.915 2.34 2.34 0 0 1-4.659 0 2.34 2.34 0 0 0-3.32-1.915 2.34 2.34 0 0 1-2.33-4.033 2.34 2.34 0 0 0 0-3.831A2.34 2.34 0 0 1 6.35 6.051a2.34 2.34 0 0 0 3.319-1.915" /><circle cx={12} cy={12} r={3} /></svg>
 
 
             </button>
 
-            <button data-bs-toggle="tooltip" data-bs-placement="top" title={t('Rewind 10 seconds')} className="player-btn" onClick={seekBackward}>
+            <button data-bs-toggle="tooltip" data-bs-placement="top" title={t('Rewind 10 seconds')} className="playercc-btn" onClick={seekBackward}>
               <svg xmlns="http://www.w3.org/2000/svg" width={28} height={28} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-backward">
                 <path d="m9 17-5-5 5-5" />
                 <path d="M20 18v-2a4 4 0 0 0-4-4H4" />
@@ -675,13 +675,13 @@ export default function ReactPlayerCC({
 
             </button>
 
-            <button data-bs-toggle="tooltip" data-bs-placement="top" title={t('Forward 10 seconds')} className="player-btn" onClick={seekForward}>
+            <button data-bs-toggle="tooltip" data-bs-placement="top" title={t('Forward 10 seconds')} className="playercc-btn" onClick={seekForward}>
               <svg xmlns="http://www.w3.org/2000/svg" width={28} height={28} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-forward-icon lucide-forward"><path d="m15 17 5-5-5-5" /><path d="M4 18v-2a4 4 0 0 1 4-4h12" /></svg>
 
             </button>
 
-            {!!showSettings && <div className="player-settings">
-              <button data-bs-toggle="tooltip" data-bs-placement="top" title={t('Subtitle Alignment')} className="player-btn" onClick={() => {
+            {!!showSettings && <div className="playercc-settings">
+              <button data-bs-toggle="tooltip" data-bs-placement="top" title={t('Subtitle Alignment')} className="playercc-btn" onClick={() => {
                 setDirection((dir) => {
                   if (dir === 'rtl') {
                     return 'ltr';
@@ -699,7 +699,7 @@ export default function ReactPlayerCC({
                 }
               </button>
 
-              <button data-bs-toggle="tooltip" data-bs-placement="top" title={t('Move Subtitles Up')} className="player-btn" onClick={() => {
+              <button data-bs-toggle="tooltip" data-bs-placement="top" title={t('Move Subtitles Up')} className="playercc-btn" onClick={() => {
                 setSubtitleMargin(subtitleMargin + 5);
                 localStorage.setItem('subtitleMargin', (subtitleMargin + 5)?.toString());
               }}>
@@ -708,7 +708,7 @@ export default function ReactPlayerCC({
                 </svg>
 
               </button>
-              <button data-bs-toggle="tooltip" data-bs-placement="top" title={t('Move Subtitles Down')} className="player-btn" onClick={() => {
+              <button data-bs-toggle="tooltip" data-bs-placement="top" title={t('Move Subtitles Down')} className="playercc-btn" onClick={() => {
                 setSubtitleMargin(subtitleMargin - 5);
                 localStorage.setItem('subtitleMargin', (subtitleMargin - 5)?.toString());
               }}>
@@ -717,8 +717,8 @@ export default function ReactPlayerCC({
                 </svg>
 
               </button>
-              <div className="text-white"><span className="badge bg-primary">{subtitleMargin}</span></div>
-              <button data-bs-toggle="tooltip" data-bs-placement="top" title={t('Delay Subtitles')} className="player-btn" onClick={() => {
+              <div className="text-white"><span className="playercc-badge playercc-bg-primary">{subtitleMargin}</span></div>
+              <button data-bs-toggle="tooltip" data-bs-placement="top" title={t('Delay Subtitles')} className="playercc-btn" onClick={() => {
                 addOffset();
               }}>
                 <svg fill="currentColor" width={24} height={24} viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg">
@@ -727,7 +727,7 @@ export default function ReactPlayerCC({
                 </svg>
 
               </button>
-              <button data-bs-toggle="tooltip" data-bs-placement="top" title={t('Advance Subtitles')} className="player-btn" onClick={() => {
+              <button data-bs-toggle="tooltip" data-bs-placement="top" title={t('Advance Subtitles')} className="playercc-btn" onClick={() => {
                 removeOffset();
               }}>
                 <svg fill="currentColor" width={24} height={24} viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg">
@@ -741,28 +741,28 @@ export default function ReactPlayerCC({
           </div>
           <Progress fref={progressRef} onClick={handleProgressClick} isDragging={isDragging} progress={progress} onDrag={handleDrag} />
 
-          <div className="player-bar">
+          <div className="playercc-bar">
 
-            <button aria-label={t('Play or Pause')} data-bs-toggle="tooltip" data-bs-placement="top" className="player-btn" onClick={playHandler}>{!play ?
+            <button aria-label={t('Play or Pause')} data-bs-toggle="tooltip" data-bs-placement="top" className="playercc-btn" onClick={playHandler}>{!play ?
               <svg xmlns="http://www.w3.org/2000/svg" width={32} height={32} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-play-icon lucide-play"><path d="M5 5a2 2 0 0 1 3.008-1.728l11.997 6.998a2 2 0 0 1 .003 3.458l-12 7A2 2 0 0 1 5 19z" /></svg>
               : <svg xmlns="http://www.w3.org/2000/svg" width={32} height={32} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-square-icon lucide-square"><rect width={18} height={18} x={3} y={3} rx={2} /></svg>
 
             }</button>
 
-            {subtitles && subtitles?.length > 0 && <button data-bs-toggle="tooltip" data-bs-placement="top" title={t('Subtitles')} className="player-btn" onClick={() => setShowSubtitles(!showSubtitles)}>
+            {subtitles && subtitles?.length > 0 && <button data-bs-toggle="tooltip" data-bs-placement="top" title={t('Subtitles')} className="playercc-btn" onClick={() => setShowSubtitles(!showSubtitles)}>
               <svg xmlns="http://www.w3.org/2000/svg" width={32} height={32} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-closed-caption-icon lucide-closed-caption"><path d="M10 9.17a3 3 0 1 0 0 5.66" /><path d="M17 9.17a3 3 0 1 0 0 5.66" /><rect x={2} y={5} width={20} height={14} rx={2} /></svg>
 
             </button>}
-            <div className="player-right-side">
-              <div className="player-sound-wrapper">
+            <div className="playercc-right-side">
+              <div className="playercc-sound-wrapper">
 
                 {volume > 0 ?
-                  <button className="player-btn" aria-label={t('Mute')} onClick={() => setVolume(0)}>
+                  <button className="playercc-btn" aria-label={t('Mute')} onClick={() => setVolume(0)}>
                     <svg xmlns="http://www.w3.org/2000/svg" width={28} height={28} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-volume2-icon lucide-volume-2"><path d="M11 4.702a.705.705 0 0 0-1.203-.498L6.413 7.587A1.4 1.4 0 0 1 5.416 8H3a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h2.416a1.4 1.4 0 0 1 .997.413l3.383 3.384A.705.705 0 0 0 11 19.298z" /><path d="M16 9a5 5 0 0 1 0 6" /><path d="M19.364 18.364a9 9 0 0 0 0-12.728" /></svg>
 
                   </button>
                   :
-                  <button className="player-btn" aria-label={t('Unmute')} onClick={() => setVolume(100)}>
+                  <button className="playercc-btn" aria-label={t('Unmute')} onClick={() => setVolume(100)}>
                     <svg xmlns="http://www.w3.org/2000/svg" width={28} height={28} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-volume-off-icon lucide-volume-off"><path d="M16 9a5 5 0 0 1 .95 2.293" /><path d="M19.364 5.636a9 9 0 0 1 1.889 9.96" /><path d="m2 2 20 20" /><path d="m7 7-.587.587A1.4 1.4 0 0 1 5.416 8H3a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h2.416a1.4 1.4 0 0 1 .997.413l3.383 3.384A.705.705 0 0 0 11 19.298V11" /><path d="M9.828 4.172A.686.686 0 0 1 11 4.657v.686" /></svg>
 
                   </button>
@@ -785,11 +785,11 @@ export default function ReactPlayerCC({
 
               </div>
 
-              <span className="player-time">
+              <span className="playercc-time">
                 {formatTime(currentTime)} - {formatTime(duration)}
               </span>
 
-              <button className="player-btn" onClick={enterFullscreen} aria-label={t('Fullscreen')}>
+              <button className="playercc-btn" onClick={enterFullscreen} aria-label={t('Fullscreen')}>
 
                 <svg xmlns="http://www.w3.org/2000/svg" width={32} height={32} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-fullscreen-icon lucide-fullscreen"><path d="M3 7V5a2 2 0 0 1 2-2h2" /><path d="M17 3h2a2 2 0 0 1 2 2v2" /><path d="M21 17v2a2 2 0 0 1-2 2h-2" /><path d="M7 21H5a2 2 0 0 1-2-2v-2" /><rect width={10} height={8} x={7} y={8} rx={1} /></svg>
 
@@ -799,7 +799,7 @@ export default function ReactPlayerCC({
         </div>
       </div>
 
-      <div className={`player-subtitles ${!showSubtitles ? 'd-none' : ''}`}>
+      <div className={`playercc-subtitles ${!showSubtitles ? 'd-none' : ''}`}>
         <strong>{t('Select Subtitle')}</strong>
         <ul>
           {subtitles?.map((subtitle) => {

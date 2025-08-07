@@ -33,7 +33,7 @@ export const Progress = ({
 
   return <div
     style={width ? { width } : {}}
-    className="player-progress-container"
+    className="playercc-progress-container"
     ref={fref}
     onClick={onClick}
     onMouseDown={() => isDragging.current = true}
@@ -44,12 +44,12 @@ export const Progress = ({
     onTouchMove={(e) => isDragging?.current && onDrag(e)}
   >
     <div
-      className="player-progress-bar"
+      className="playercc-progress-bar"
       style={{
         width: `${progress}%`
       }}
     />
-    <div className="player-container-bullet"
+    <div className="playercc-container-bullet"
       style={{
         left: `calc(${progress}%)`
       }}
