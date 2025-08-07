@@ -1,4 +1,4 @@
-# React Custom Player
+### 📺 React Custom Player
 react-player-cc is a lightweight and customizable React video player component with built-in support for:
 
 Custom controls (play/pause, volume, progress bar, etc.)
@@ -9,7 +9,7 @@ Seamless integration with React projects
 
 Minimal setup — just import the component and stylesheet
 
-# ✅ Example Usage
+### ✅ Example Usage
 
 ```ts
 import 'react-player-cc/style.css'
@@ -20,7 +20,7 @@ function App() {
 }
 ```
 
-# 🛠 Features
+### 🛠 Features
 
 🎛 Custom built controls (not using the browser's native controls)
 
@@ -32,7 +32,7 @@ function App() {
 
 🚫 No external dependencies beyond react and react-dom
 
-# 📦 Installation
+### 📦 Installation
 Install via NPM:
 
 ```
