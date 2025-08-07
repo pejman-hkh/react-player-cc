@@ -5,6 +5,7 @@ import dst from 'vite-plugin-dts'
 
 // https://vite.dev/config/
 export default defineConfig({
+  base: '/react-player-cc/',
   plugins: [react(), dst({ tsconfigPath: './tsconfig.app.json' })],
   build: {
     lib: {
