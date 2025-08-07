@@ -9,7 +9,8 @@ Seamless integration with React projects
 
 Minimal setup — just import the component and stylesheet
 
-✅ Example Usage
+# ✅ Example Usage
+
 ```ts
 import 'react-player-cc/style.css'
 import ReactPlayerCC from 'react-player-cc'
@@ -19,8 +20,7 @@ function App() {
 }
 ```
 
-🛠 Features
-
+# 🛠 Features
 
 🎛 Custom built controls (not using the browser's native controls)
 
@@ -32,3 +32,13 @@ function App() {
 
 🚫 No external dependencies beyond react and react-dom
 
+# 📦 Installation
+Install via NPM:
+
+```
+npm install react-player-cc
+```
+
+```
+yarn add react-player-cc
+```
