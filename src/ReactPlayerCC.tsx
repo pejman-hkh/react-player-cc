@@ -6,6 +6,8 @@ import { formatTime, makeBlobUrl } from './utils';
 import { Progress } from './Progress';
 import { useTranslator, type LangCode } from './lang';
 import icons from './icons';
+import type { PlayerInterface } from './PlayerInterface';
+import { DefaultPlayer } from './DefaultPlayer';
 export type SubtitleType = {
   id: number;
   title: string;
@@ -42,13 +44,14 @@ type PlayerProps = {
   alert?: ReactNode,
   children?: ReactNode,
   id?: number,
-  src?: string,
+  src: string,
   subtitles?: SubtitleType[],
   lang?: LangCode,
   onPlay?: (video: RefObject<HTMLVideoElement | null>, isFullScreen: boolean) => void,
   onPause?: (video: RefObject<HTMLVideoElement | null>, isFullScreen: boolean) => void,
   onLoad?: (selectSubtitle: (subtitle: SubtitleType) => Promise<string | undefined>) => void,
   onFullScreen?: (isFullScreen: boolean) => void,
+  playerClass?: new (video: HTMLVideoElement) => PlayerInterface;
 };
 
 export default function ReactPlayerCC({
@@ -58,6 +61,7 @@ export default function ReactPlayerCC({
   src,
   subtitles,
   lang = "en",
+  playerClass = DefaultPlayer,
   onPlay,
   onPause,
   onLoad,
@@ -103,6 +107,17 @@ export default function ReactPlayerCC({
   const isPlaying = useRef(false);
 
   const [showSubtitles, setShowSubtitles] = useState(false);
+
+  const playerRef = useRef<PlayerInterface>(null);
+
+  useEffect(() => {
+    if (videoRef.current) {
+      playerRef.current = new playerClass(videoRef.current);
+      playerRef.current.load(src);
+    }
+    return () => playerRef.current?.destroy();
+  }, [playerClass, src]);
+
 
   const loadSubtitle = () => {
     const video = videoRef.current!;
@@ -278,16 +293,14 @@ export default function ReactPlayerCC({
         onPlay(videoRef, isFullScreen);
       }
       if (hasSrc) {
-        video.play().catch((err) => {
-          console.error(err);
-        });
+        playerRef.current?.play();
       }
     } else {
       if (onPause) {
         onPause(videoRef, isFullScreen);
       }
       if (hasSrc) {
-        video.pause();
+        playerRef.current?.pause();
       }
     }
     if (hasSrc) {
@@ -416,21 +429,21 @@ export default function ReactPlayerCC({
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [fromFirst, isHovered, seekBackward, seekForward]);
 
-  useEffect(() => {
+  // useEffect(() => {
 
-    const video = videoRef?.current;
-    if (video) {
-      video.src = src || "";
-    }
-    return () => {
+  //   const video = videoRef?.current;
+  //   if (video) {
+  //     video.src = src || "";
+  //   }
+  //   return () => {
 
-      if (video) {
-        video.pause();
-        video.src = '';
-        video.load();
-      }
-    };
-  }, [src]);
+  //     if (video) {
+  //       video.pause();
+  //       video.src = '';
+  //       video.load();
+  //     }
+  //   };
+  // }, [src]);
 
   const videoType = `video/x-matroska; codecs="theora, vorbis"`;
 
@@ -477,10 +490,10 @@ export default function ReactPlayerCC({
               hideBar();
             } else {
               if (video.paused) {
-                video.play();
+                playerRef.current?.play();
                 setPlay(true);
               } else {
-                video.pause();
+                playerRef.current?.pause();
                 setPlay(false);
               }
             }
@@ -589,9 +602,7 @@ export default function ReactPlayerCC({
           } else {
             seekForward();
           }
-          videoRef.current!.play().catch((err) => {
-            console.error(err);
-          });
+          playerRef.current?.play();
           setPlay(true);
         }}
         onMouseEnter={() => isHovered.current = true}
@@ -650,9 +661,7 @@ export default function ReactPlayerCC({
                 const key = `video-progress-${id}`;
                 localStorage.removeItem(key);
                 setFromFirst(false);
-                videoRef.current!.play().catch((err) => {
-                  console.error(err);
-                });
+                playerRef.current?.play();
               }
             }} className="playercc-fromfirst">
               <h5>{t('Play from First')}</h5>
@@ -709,7 +718,7 @@ export default function ReactPlayerCC({
               }}>
                 {icons.advanceSubtitles}
               </button>
-              <div className="text-white"><span className="badge bg-primary">{subtitleOffset}</span></div>
+              <div className="text-white"><span className="playercc-badge playercc-bg-primary">{subtitleOffset}</span></div>
             </div>}
           </div>
           <Progress fref={progressRef} onClick={handleProgressClick} isDragging={isDragging} progress={progress} onDrag={handleDrag} />
