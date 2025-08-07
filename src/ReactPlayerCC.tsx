@@ -337,17 +337,16 @@ export default function ReactPlayerCC({
     if (!trackRef.current) return;
     setShowSubtitles(false);
     const api = await fetch(subtitle.link);
-    const json = await api.json();
-    const data: Array<string> = json?.data;
-    const subtitleText = data?.[0];
+    const text = await api.text();
+
     if (trackRef.current) {
-      trackRef.current.src = makeBlobUrl(subtitleText);
+      trackRef.current.src = makeBlobUrl(text);
     }
 
     loadSubtitle();
     setActiveSubtitle(subtitle?.id);
 
-    return subtitleText;
+    return text;
   }, []);
 
   useEffect(() => {
