@@ -43,7 +43,7 @@ npm install react-player-cc
 yarn add react-player-cc
 ```
 
-## Using Custom Players with `playerClass`
+### Using Custom Players with `playerClass`
 
 By default, this package uses the native `<video>` element for playback.  
 However, you can pass a class that implements the `PlayerInterface` to use any custom player you want — such as **HLS**, **DASH**, **WebRTC**, and more.
