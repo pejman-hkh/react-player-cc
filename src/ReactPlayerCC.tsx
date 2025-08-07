@@ -1,6 +1,6 @@
 "use client"
 import React, { type MouseEvent, type ReactNode, type RefObject, useCallback, useEffect, useRef, useState } from 'react';
-import './ReactPlayerx.css';
+import './ReactPlayerCC.css';
 import Spinner from './Spinner';
 import { formatTime, makeBlobUrl } from './utils';
 import { Progress } from './Progress';
@@ -51,7 +51,7 @@ type PlayerProps = {
   onFullScreen?: (isFullScreen: boolean) => void,
 };
 
-export default function ReactPlayerx({
+export default function ReactPlayerCC({
   alert,
   children,
   id,

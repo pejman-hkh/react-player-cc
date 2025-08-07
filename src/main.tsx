@@ -1,6 +1,6 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
-import ReactPlayerx from './ReactPlayerx.tsx'
+import ReactPlayerx from './ReactPlayerCC.tsx'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>

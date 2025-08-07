@@ -9,7 +9,7 @@ export default defineConfig({
   build: {
     lib: {
       entry: path.resolve(__dirname, 'src/index.tsx'),
-      name: 'react-playerx',
+      name: 'react-player-cc',
       fileName: (format) => `index.${format}.js`
     },
     emptyOutDir: true,
