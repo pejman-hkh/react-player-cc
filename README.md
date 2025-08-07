@@ -12,10 +12,10 @@ Minimal setup — just import the component and stylesheet
 ✅ Example Usage
 ```ts
 import 'react-player-cc/style.css'
-import ReactCustomPlayer from 'react-player-cc'
+import ReactPlayerCC from 'react-player-cc'
 
 function App() {
-  return <ReactCustomPlayer src="/video.mp4" subtitles="/subs.srt" />
+  return <ReactPlayerCC src="/video.mp4" subtitles="/subs.srt" />
 }
 ```
 

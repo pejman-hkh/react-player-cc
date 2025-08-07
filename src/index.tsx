@@ -1,4 +1,4 @@
-import ReactCustomPlayer from "./ReactPlayerCC";
+import ReactPlayerCC from "./ReactPlayerCC";
 
-export { ReactCustomPlayer }
-export default ReactCustomPlayer
+export { ReactPlayerCC }
+export default ReactPlayerCC
