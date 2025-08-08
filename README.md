@@ -43,6 +43,12 @@ npm install react-player-cc
 yarn add react-player-cc
 ```
 
+### Demo
+
+https://pejman-hkh.github.io/react-player-cc-demo/
+
+https://github.com/pejman-hkh/react-player-cc-demo
+
 ### Using Custom Players with `playerClass`
 
 By default, this package uses the native `<video>` element for playback.  
@@ -56,58 +62,7 @@ First, install **Hls.js**:
 npm install hls.js
 ```
 
-Create a custom player class for HLS:
-
-```ts
-import Hls from "hls.js";
-import { PlayerInterface } from "./PlayerInterface";
-
-export class HlsVideoPlayer implements PlayerInterface {
-  private hls: Hls;
-  private video: HTMLVideoElement;
-
-  constructor(video: HTMLVideoElement) {
-    this.video = video;
-    this.hls = new Hls();
-    this.hls.attachMedia(video);
-  }
-
-  load(src: string) {
-    if (Hls.isSupported()) {
-      this.hls.loadSource(src);
-    } else if (this.video.canPlayType("application/vnd.apple.mpegurl")) {
-      this.video.src = src;
-    }
-  }
-
-  play() {
-    this.video.play();
-  }
-
-  pause() {
-    this.video.pause();
-  }
-
-  destroy() {
-    this.hls.destroy();
-  }
-}
-```
-
-Now simply pass the class to the playerClass prop:
-
-```ts
-<ReactPlayerCC
-src="https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8"
-playerClass={HlsVideoPlayer}
-/>
-```
-
-### Demo
-
-https://pejman-hkh.github.io/react-player-cc-demo/
-
-https://github.com/pejman-hkh/react-player-cc-demo
+Create a custom player class for HLS
 
 ### Example Usage
 
@@ -153,11 +108,8 @@ function App() {
   return <>
 
     <div className="min-h-screen bg-gray-100 flex flex-col items-center p-2">
-      {/* Header */}
-      
       <h1 className="text-3xl font-bold flex items-center"> <img src="logo.svg" width={100} /> React Player CC Demo</h1>
 
-      {/* Player Card */}
       <div className="bg-white rounded-2xl shadow-lg w-full max-w-4xl p-3">
 
         <h2 className="text-2xl font-bold mt-8">MP4 Example</h2>
