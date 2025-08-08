@@ -106,6 +106,7 @@ playerClass={HlsVideoPlayer}
 ### Demo
 
 https://pejman-hkh.github.io/react-player-cc-demo/
+
 https://github.com/pejman-hkh/react-player-cc-demo
 
 ### Example Usage
